@@ -23,8 +23,8 @@
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <menu key="menu" id="tDB-Tu-Sh8">
                                     <children>
-                                        <command title="Item 1" id="VXY-o7-p1g"/>
-                                        <command title="Item 2" id="IU8-Eb-iBi"/>
+                                        <command title="32" id="VXY-o7-p1g"/>
+                                        <command title="36" id="IU8-Eb-iBi"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="Button"/>
@@ -47,7 +47,7 @@
                                 <rect key="frame" x="263" y="262" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Расстояние от центра до фланца втулки:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwK-UM-kJh" userLabel="center to edge hub">
                                 <rect key="frame" x="20" y="344" width="222" height="50"/>
@@ -60,7 +60,7 @@
                                 <rect key="frame" x="263" y="352" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Количество крестов:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfq-qw-Csg" userLabel="count crosses">
                                 <rect key="frame" x="20" y="432" width="222" height="50"/>
@@ -94,7 +94,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Расчитать"/>
                                 <connections>
-                                    <action selector="calculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEb-9Q-HAY"/>
+                                    <action selector="calculateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6cF-6P-mOg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,6 +102,7 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
                     <connections>
+                        <outlet property="calculateButton" destination="FPn-F2-iLk" id="yJh-Xo-T3I"/>
                         <outlet property="erdField" destination="8CB-Ul-d4z" id="UfQ-p1-gFH"/>
                         <outlet property="howManyCrossesButton" destination="YLO-F5-1nZ" id="dWI-kO-5uc"/>
                         <outlet property="howManySpokesButton" destination="PB5-Ds-hh5" id="VEI-vz-tUF"/>
