@@ -21,6 +21,18 @@ class ResultViewController: UIViewController {
         resultLabelLeft.text = result
         resultLabelRight.text = result
         
+        //navigationController?.navigationBar.backItem?.title = "Назад"
+        
     }
+    
+    @IBAction func copyButtonLeft(_ sender: UIButton) {
+        UIPasteboard.general.string = resultLabelLeft.text
+    }
+    
+    
+    @IBAction func copyButtonRight(_ sender: UIButton) {
+        UIPasteboard.general.string = resultLabelRight.text
+    }
+    
     
 }
