@@ -10,8 +10,13 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
+    var result: String?
+    
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
+        
+        resultLabel.text = result
         
     }
     

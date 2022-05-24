@@ -11,6 +11,8 @@ class CalculationViewController: UIViewController {
     
     var calculateBrain = CalculateBrain()
     
+    var global = ""
+    
     @IBOutlet weak var howManySpokesButton: UIButton!
     @IBOutlet weak var erdField: UITextField!
     @IBOutlet weak var hubSizeField: UITextField!
@@ -34,9 +36,6 @@ class CalculationViewController: UIViewController {
         self.hideKeyBoard()
         
         
-        
-        
-        
     }
 
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
@@ -49,35 +48,37 @@ class CalculationViewController: UIViewController {
             
             let calculdateModel = CalculateModel(countSpokes: Double(howManySpokesButton.titleLabel!.text!)!, erd: Double(erd!)!, hubDiameter: Double(hubSize!)!, hubFlance: Double(hubSize2!)!, crossesCount: Double(howManyCrossesButton.titleLabel!.text!)!)
             
-                print(calculateBrain.calculatelength(parameter: calculdateModel))
+                calculateBrain.calculatelength(parameter: calculdateModel)
             
-            erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-            hubSizeField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-            hubSize2Field.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+                erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+                hubSizeField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+                hubSize2Field.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            
+                self.performSegue(withIdentifier: "goToResultViewController", sender: self)
             
         } else {
-            if erd == "" {
+                if erd == "" {
                 
-                erdField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            }
+                    erdField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                }
             
-            if hubSize == "" {
-                hubSizeField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            }
+                if hubSize == "" {
+                    hubSizeField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                }
             
-            if hubSize2 == "" {
-                hubSize2Field.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-            }
-            
+                if hubSize2 == "" {
+                    hubSize2Field.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                }
             
         }
         
-        
-        
-        
-        
-        //print(howManySpokesButton.titleLabel!.text!)
-        //print(howManyCrossesButton.titleLabel!.text!)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResultViewController" {
+            let destinationVC = segue.destination as! ResultViewController
+            destinationVC.result = calculateBrain.getCalculatedLegth()
+        }
     }
     
 
@@ -88,8 +89,8 @@ class CalculationViewController: UIViewController {
             print(action.title)}
         
         howManySpokesButton.menu = UIMenu(children : [
-            UIAction(title : "28", state: .on, handler: optionClousere),
-            UIAction(title : "32", handler: optionClousere),
+            UIAction(title : "28", handler: optionClousere),
+            UIAction(title : "32", state: .on, handler: optionClousere),
             UIAction(title : "36", handler: optionClousere)
         ])
         
@@ -97,9 +98,9 @@ class CalculationViewController: UIViewController {
         howManySpokesButton.changesSelectionAsPrimaryAction = true
         
         howManyCrossesButton.menu = UIMenu(children : [
-            UIAction(title : "1", state: .on, handler: optionClousere),
+            UIAction(title : "1", handler: optionClousere),
             UIAction(title : "2", handler: optionClousere),
-            UIAction(title : "3", handler: optionClousere),
+            UIAction(title : "3", state: .on, handler: optionClousere),
             UIAction(title : "4", handler: optionClousere)
         ])
         
@@ -114,6 +115,7 @@ class CalculationViewController: UIViewController {
 //MARK: - Dismiss keyboard
 
 extension UIViewController {
+    
     func hideKeyBoard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dissmissKeyboard))
         tap.cancelsTouchesInView = false
