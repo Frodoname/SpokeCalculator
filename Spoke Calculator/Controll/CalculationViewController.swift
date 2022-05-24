@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculationViewController: UIViewController {
+    
+    var calculateBrain = CalculateBrain()
     
     @IBOutlet weak var howManySpokesButton: UIButton!
     @IBOutlet weak var erdField: UITextField!
     @IBOutlet weak var hubSizeField: UITextField!
+    @IBOutlet weak var hubSize2Field: UITextField!
     @IBOutlet weak var howManyCrossesButton: UIButton!
     @IBOutlet weak var calculateButton: UIButton!
     
@@ -19,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calculateButton.setTitleColor(UIColor.black, for: .normal)
+        calculateButton.setTitleColor(UIColor.white, for: .normal)
         calculateButton.setTitle("Расчитать", for: .normal)
         calculateButton.layer.cornerRadius = calculateButton.frame.width / 12
         calculateButton.layer.masksToBounds = true
@@ -32,11 +35,49 @@ class ViewController: UIViewController {
         
         
         
+        
+        
     }
 
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
-        print(howManySpokesButton.titleLabel!.text!)
-        print(howManyCrossesButton.titleLabel!.text!)
+        
+        let erd = erdField.text
+        let hubSize = hubSizeField.text
+        let hubSize2 = hubSize2Field.text
+        
+        if erd != "", hubSize != "", hubSize2 != "" {
+            
+            let calculdateModel = CalculateModel(countSpokes: Double(howManySpokesButton.titleLabel!.text!)!, erd: Double(erd!)!, hubDiameter: Double(hubSize!)!, hubFlance: Double(hubSize2!)!, crossesCount: Double(howManyCrossesButton.titleLabel!.text!)!)
+            
+                print(calculateBrain.calculatelength(parameter: calculdateModel))
+            
+            erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            hubSizeField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            hubSize2Field.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            
+        } else {
+            if erd == "" {
+                
+                erdField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
+            
+            if hubSize == "" {
+                hubSizeField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
+            
+            if hubSize2 == "" {
+                hubSize2Field.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+        //print(howManySpokesButton.titleLabel!.text!)
+        //print(howManyCrossesButton.titleLabel!.text!)
     }
     
 
