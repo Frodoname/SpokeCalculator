@@ -12,11 +12,14 @@ class ResultViewController: UIViewController {
     
     var result: String?
     
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var resultLabelLeft: UILabel!
+    @IBOutlet weak var resultLabelRight: UILabel!
+    
     
     override func viewDidLoad() {
         
-        resultLabel.text = result
+        resultLabelLeft.text = result
+        resultLabelRight.text = result
         
     }
     
