@@ -11,12 +11,12 @@ class CalculationViewController: UIViewController {
     
     var calculateBrain = CalculateBrain()
     
-    var global = ""
     
     @IBOutlet weak var howManySpokesButton: UIButton!
     @IBOutlet weak var erdField: UITextField!
-    @IBOutlet weak var hubSizeField: UITextField!
-    @IBOutlet weak var hubSize2Field: UITextField!
+    @IBOutlet weak var hubSizeFlanceDiamterField: UITextField!
+    @IBOutlet weak var leftCenterFlanceField: UITextField!
+    @IBOutlet weak var rightCenterFlanceField: UITextField!
     @IBOutlet weak var howManyCrossesButton: UIButton!
     @IBOutlet weak var calculateButton: UIButton!
     
@@ -24,35 +24,28 @@ class CalculationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calculateButton.setTitleColor(UIColor.white, for: .normal)
-        calculateButton.setTitle("Расчитать", for: .normal)
-        calculateButton.layer.cornerRadius = calculateButton.frame.width / 12
-        calculateButton.layer.masksToBounds = true
-        calculateButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-        calculateButton.layer.borderWidth = 1
-        
         setPopupButton()
-        
         self.hideKeyBoard()
-        
         
     }
 
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         
         let erd = erdField.text
-        let hubSize = hubSizeField.text
-        let hubSize2 = hubSize2Field.text
+        let hubSize = hubSizeFlanceDiamterField.text
+        let hubSize2 = leftCenterFlanceField.text
+        let hubSize3 = rightCenterFlanceField.text
         
-        if erd != "", hubSize != "", hubSize2 != "" {
+        if erd != "", hubSize != "", hubSize2 != "", hubSize3 != "" {
             
-            let calculdateModel = CalculateModel(countSpokes: Double(howManySpokesButton.titleLabel!.text!)!, erd: Double(erd!)!, hubDiameter: Double(hubSize!)!, hubFlance: Double(hubSize2!)!, crossesCount: Double(howManyCrossesButton.titleLabel!.text!)!)
+            let calculdateModel = CalculateModel(countSpokes: Double(howManySpokesButton.titleLabel!.text!)!, erd: Double(erd!)!, hubDiameter: Double(hubSize!)!, leftHubFlance: Double(hubSize2!)!, rightHubFlance: Double(hubSize3!)!, crossesCount: Double(howManyCrossesButton.titleLabel!.text!)!)
             
-                calculateBrain.calculatelength(parameter: calculdateModel)
+                calculateBrain.calculateLengthLeftSide(parameter: calculdateModel)
+                calculateBrain.calculateLengthRightSide(parameter: calculdateModel)
             
                 erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-                hubSizeField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-                hubSize2Field.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+                hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+                leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
             
                 self.performSegue(withIdentifier: "goToResultViewController", sender: self)
             
@@ -63,21 +56,44 @@ class CalculationViewController: UIViewController {
                 }
             
                 if hubSize == "" {
-                    hubSizeField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                    hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
                 }
             
                 if hubSize2 == "" {
-                    hubSize2Field.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                    leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+                }
+            
+                if hubSize3 == "" {
+                    rightCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
                 }
             
         }
         
     }
     
+    
+    @IBAction func clearButtonPressed(_ sender: UIButton) {
+        
+            erdField.text = ""
+            hubSizeFlanceDiamterField.text = ""
+            leftCenterFlanceField.text = ""
+            rightCenterFlanceField.text = ""
+            
+            erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+        rightCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            
+    }
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResultViewController" {
             let destinationVC = segue.destination as! ResultViewController
-            destinationVC.result = calculateBrain.getCalculatedLegth()
+            destinationVC.resultLeftSide = calculateBrain.getCalculatedLengthLeft()
+            destinationVC.resultRightSide = calculateBrain.getCalculatedLengthRight()
         }
     }
     

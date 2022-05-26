@@ -12,6 +12,7 @@ class StartViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        //navigationItem.backButtonTitle = "Назад"
         
     }
     

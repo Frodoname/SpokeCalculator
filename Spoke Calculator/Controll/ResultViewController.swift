@@ -10,7 +10,8 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var result: String?
+    var resultLeftSide: String?
+    var resultRightSide: String?
     
     @IBOutlet weak var resultLabelLeft: UILabel!
     @IBOutlet weak var resultLabelRight: UILabel!
@@ -18,8 +19,8 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        resultLabelLeft.text = result
-        resultLabelRight.text = result
+        resultLabelLeft.text = resultLeftSide
+        resultLabelRight.text = resultRightSide
         
         //navigationController?.navigationBar.backItem?.title = "Назад"
         

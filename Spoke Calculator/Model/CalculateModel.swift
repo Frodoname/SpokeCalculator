@@ -12,7 +12,8 @@ struct CalculateModel {
     var countSpokes: Double
     var erd: Double
     var hubDiameter: Double
-    var hubFlance: Double
+    var leftHubFlance: Double
+    var rightHubFlance: Double
     var crossesCount: Double
     
 
