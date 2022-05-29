@@ -27,7 +27,6 @@ class PopUpViewController: UIViewController {
         titleLabel.text = titleResult
         textField.text = textResult
         
-        
     }
     
     @IBAction func closeButton(_ sender: UIButton) {

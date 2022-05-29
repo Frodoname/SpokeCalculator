@@ -23,7 +23,7 @@ class CalculationViewController: UIViewController {
     @IBOutlet weak var howManyCrossesButton: UIButton!
     @IBOutlet weak var calculateButton: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +31,7 @@ class CalculationViewController: UIViewController {
         self.hideKeyBoard()
         
     }
-
+    
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
         
         let erd = erdField.text
@@ -43,32 +43,32 @@ class CalculationViewController: UIViewController {
             
             let calculdateModel = CalculateModel(countSpokes: Double(howManySpokesButton.titleLabel!.text!)!, erd: Double(erd!)!, hubDiameter: Double(hubSize!)!, leftHubFlance: Double(hubSize2!)!, rightHubFlance: Double(hubSize3!)!, crossesCount: Double(howManyCrossesButton.titleLabel!.text!)!)
             
-                calculateBrain.calculateLengthLeftSide(parameter: calculdateModel)
-                calculateBrain.calculateLengthRightSide(parameter: calculdateModel)
+            calculateBrain.calculateLengthLeftSide(parameter: calculdateModel)
+            calculateBrain.calculateLengthRightSide(parameter: calculdateModel)
             
-                erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-                hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-                leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+            leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
             
-                self.performSegue(withIdentifier: "goToResultViewController", sender: self)
+            self.performSegue(withIdentifier: "goToResultViewController", sender: self)
             
         } else {
-                if erd == "" {
+            if erd == "" {
                 
-                    erdField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                }
+                erdField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
             
-                if hubSize == "" {
-                    hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                }
+            if hubSize == "" {
+                hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
             
-                if hubSize2 == "" {
-                    leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                }
+            if hubSize2 == "" {
+                leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
             
-                if hubSize3 == "" {
-                    rightCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
-                }
+            if hubSize3 == "" {
+                rightCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "Введите значение", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
             
         }
         
@@ -77,16 +77,16 @@ class CalculationViewController: UIViewController {
     
     @IBAction func clearButtonPressed(_ sender: UIButton) {
         
-            erdField.text = ""
-            hubSizeFlanceDiamterField.text = ""
-            leftCenterFlanceField.text = ""
-            rightCenterFlanceField.text = ""
-            
-            erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-            hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-            leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+        erdField.text = ""
+        hubSizeFlanceDiamterField.text = ""
+        leftCenterFlanceField.text = ""
+        rightCenterFlanceField.text = ""
+        
+        erdField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+        hubSizeFlanceDiamterField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
+        leftCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
         rightCenterFlanceField.attributedPlaceholder = NSAttributedString(string: "milimeters", attributes: .none)
-            
+        
     }
     
     
@@ -97,29 +97,27 @@ class CalculationViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.resultLeftSide = calculateBrain.getCalculatedLengthLeft()
             destinationVC.resultRightSide = calculateBrain.getCalculatedLengthRight()
-            } else if segue.identifier == "goToInfo" {
-                
-                let destinationVCPopUp = segue.destination as! PopUpViewController
-                destinationVCPopUp.titleResult = caclcInfo?.titleOfPopUp ?? "error1"
-                destinationVCPopUp.textResult = caclcInfo?.textOfPopUp ?? "error2"
-            }
+        } else if segue.identifier == "goToInfo" {
+            
+            let destinationVCPopUp = segue.destination as! PopUpViewController
+            destinationVCPopUp.titleResult = caclcInfo?.titleOfPopUp ?? "error1"
+            destinationVCPopUp.textResult = caclcInfo?.textOfPopUp ?? "error2"
+        }
         
-       
+        
     }
     
     @IBAction func questionButtonPressed(_ sender: UIButton) {
         
         caclcInfo = CalculateInfo(swithId: sender.accessibilityIdentifier!)
-        
         self.performSegue(withIdentifier: "goToInfo", sender: self)
-        
         
     }
     
     
-
-
-//MARK: - Function for pop up
+    
+    
+    //MARK: - Function for pop up
     
     func setPopupButton() {
         let optionClousere = {(action : UIAction) in
