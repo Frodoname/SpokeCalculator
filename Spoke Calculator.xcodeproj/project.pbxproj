@@ -13,6 +13,9 @@
 		89089609283A58A200AE2BEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89089607283A58A200AE2BEF /* Main.storyboard */; };
 		8908960B283A58A400AE2BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8908960A283A58A400AE2BEF /* Assets.xcassets */; };
 		8908960E283A58A400AE2BEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8908960C283A58A400AE2BEF /* LaunchScreen.storyboard */; };
+		890AE3DC2840D38200E67346 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 890AE3DB2840D38100E67346 /* Popup.storyboard */; };
+		890AE3DE2840D3F800E67346 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890AE3DD2840D3F800E67346 /* PopUpViewController.swift */; };
+		890AE3E0284108EA00E67346 /* CalculateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890AE3DF284108EA00E67346 /* CalculateInfo.swift */; };
 		89C2D9D1283B9E89009BF444 /* CalculateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2D9D0283B9E89009BF444 /* CalculateModel.swift */; };
 		89C2D9D4283B9EF5009BF444 /* CalculateBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2D9D3283B9EF5009BF444 /* CalculateBrain.swift */; };
 		89C2D9D6283CC14C009BF444 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2D9D5283CC14C009BF444 /* StartViewController.swift */; };
@@ -29,6 +32,9 @@
 		8908960A283A58A400AE2BEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8908960D283A58A400AE2BEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8908960F283A58A400AE2BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		890AE3DB2840D38100E67346 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
+		890AE3DD2840D3F800E67346 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		890AE3DF284108EA00E67346 /* CalculateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateInfo.swift; sourceTree = "<group>"; };
 		89C2D9D0283B9E89009BF444 /* CalculateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateModel.swift; sourceTree = "<group>"; };
 		89C2D9D3283B9EF5009BF444 /* CalculateBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBrain.swift; sourceTree = "<group>"; };
 		89C2D9D5283CC14C009BF444 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 				89089605283A58A200AE2BEF /* CalculationViewController.swift */,
 				89C2D9D7283CC417009BF444 /* ReferenceViewController.swift */,
 				89C2D9D9283CC59C009BF444 /* ResultViewController.swift */,
+				890AE3DD2840D3F800E67346 /* PopUpViewController.swift */,
 			);
 			path = Controll;
 			sourceTree = "<group>";
@@ -93,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				89089607283A58A200AE2BEF /* Main.storyboard */,
+				890AE3DB2840D38100E67346 /* Popup.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 			children = (
 				89C2D9D0283B9E89009BF444 /* CalculateModel.swift */,
 				89C2D9D3283B9EF5009BF444 /* CalculateBrain.swift */,
+				890AE3DF284108EA00E67346 /* CalculateInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 				8908960E283A58A400AE2BEF /* LaunchScreen.storyboard in Resources */,
 				8908960B283A58A400AE2BEF /* Assets.xcassets in Resources */,
 				89089609283A58A200AE2BEF /* Main.storyboard in Resources */,
+				890AE3DC2840D38200E67346 /* Popup.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +193,9 @@
 				89C2D9DA283CC59C009BF444 /* ResultViewController.swift in Sources */,
 				89089604283A58A200AE2BEF /* SceneDelegate.swift in Sources */,
 				89C2D9D4283B9EF5009BF444 /* CalculateBrain.swift in Sources */,
+				890AE3E0284108EA00E67346 /* CalculateInfo.swift in Sources */,
 				89C2D9D8283CC418009BF444 /* ReferenceViewController.swift in Sources */,
+				890AE3DE2840D3F800E67346 /* PopUpViewController.swift in Sources */,
 				89C2D9D6283CC14C009BF444 /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

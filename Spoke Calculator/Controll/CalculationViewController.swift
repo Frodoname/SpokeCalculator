@@ -7,10 +7,13 @@
 
 import UIKit
 
+
+
 class CalculationViewController: UIViewController {
     
     var calculateBrain = CalculateBrain()
     
+    var caclcInfo: CalculateInfo?
     
     @IBOutlet weak var howManySpokesButton: UIButton!
     @IBOutlet weak var erdField: UITextField!
@@ -94,9 +97,27 @@ class CalculationViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.resultLeftSide = calculateBrain.getCalculatedLengthLeft()
             destinationVC.resultRightSide = calculateBrain.getCalculatedLengthRight()
-        }
+            } else if segue.identifier == "goToInfo" {
+                
+                let destinationVCPopUp = segue.destination as! PopUpViewController
+                destinationVCPopUp.titleResult = caclcInfo?.titleOfPopUp ?? "error1"
+                destinationVCPopUp.textResult = caclcInfo?.textOfPopUp ?? "error2"
+            }
+        
+       
     }
     
+    @IBAction func questionButtonPressed(_ sender: UIButton) {
+        
+        caclcInfo = CalculateInfo(swithId: sender.accessibilityIdentifier!)
+        
+        self.performSegue(withIdentifier: "goToInfo", sender: self)
+        
+        
+    }
+    
+    
+
 
 //MARK: - Function for pop up
     
@@ -143,4 +164,6 @@ extension UIViewController {
     }
     
 }
+
+
 
